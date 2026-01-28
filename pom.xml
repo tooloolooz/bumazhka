@@ -247,9 +247,13 @@
                     <plugin>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs-maven-plugin</artifactId>
+                        <configuration>
+                            <effort>Max</effort>
+                            <threshold>Low</threshold>
+                            <xmlOutput>true</xmlOutput>
+                        </configuration>
                         <executions>
                             <execution>
-                                <id>check</id>
                                 <goals>
                                     <goal>check</goal>
                                 </goals>
@@ -279,5 +283,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>

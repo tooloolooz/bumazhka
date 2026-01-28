@@ -22,6 +22,8 @@
         <jacoco.maven.plugin.version>0.8.14</jacoco.maven.plugin.version>
         <spotbugs.maven.plugin.version>4.9.8.2</spotbugs.maven.plugin.version>
         <spotbugs.version>4.9.8</spotbugs.version>
+        <sb.contrib.version>7.7.4</sb.contrib.version>
+        <findsecbugs.plugin.version>1.14.0</findsecbugs.plugin.version>
         <pmd.maven.plugin.version>3.28.0</pmd.maven.plugin.version>
         <pmd.version>7.20.0</pmd.version>
         <pitest.maven.plugin.version>1.22.0</pitest.maven.plugin.version>
@@ -251,6 +253,18 @@
                             <effort>Max</effort>
                             <threshold>Low</threshold>
                             <xmlOutput>true</xmlOutput>
+                            <plugins>
+                                <plugin>
+                                    <groupId>com.mebigfatguy.sb-contrib</groupId>
+                                    <artifactId>sb-contrib</artifactId>
+                                    <version>${sb.contrib.version}</version>
+                                </plugin>
+                                <dependency>
+                                    <groupId>com.h3xstream.findsecbugs</groupId>
+                                    <artifactId>findsecbugs-plugin</artifactId>
+                                    <version>${findsecbugs.plugin.version}</version>
+                                </dependency>
+                            </plugins>
                         </configuration>
                         <executions>
                             <execution>

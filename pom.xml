@@ -127,6 +127,7 @@
                     </dependencies>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
                     <version>${pmd.maven.plugin.version}</version>
                     <dependencies>
@@ -316,16 +317,22 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
                         <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <failurePriority>5</failurePriority>
                             <linkXRef>false</linkXRef>
                             <targetJdk>${java.version}</targetJdk>
+                            <rulesets>
+                                <ruleset>pmd-rules.xml</ruleset>
+                            </rulesets>
                         </configuration>
                         <executions>
                             <execution>
-                                <id>check</id>
                                 <goals>
                                     <goal>check</goal>
+                                    <goal>cpd-check</goal>
                                 </goals>
                             </execution>
                         </executions>

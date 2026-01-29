@@ -91,11 +91,7 @@ public final class VehicleRegionCodeValidator {
      * @throws IllegalArgumentException if {@code code} is {@code null}.
      */
     private static boolean isValidTwoDigit(final String code) {
-        final int length = code.length();
-        if (length != TWO_DIGIT_CODE_LENGTH) {
-            return false;
-        }
-        return REGION_CODES.contains(code);
+        return code.length() == TWO_DIGIT_CODE_LENGTH && REGION_CODES.contains(code);
     }
 
     /**

@@ -1,5 +1,7 @@
 package ru.tooloolooz.bumazhka;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * Utility class for condition checking and exception throwing.
  * Provides methods for performing runtime condition checks.
@@ -23,7 +25,7 @@ final class Assert {
      * @param message the message to be used in the exception.
      * @throws IllegalArgumentException if {@code obj} is {@code null}.
      */
-    public static void notNull(final Object obj, final String message) {
+    public static void notNull(@Nullable final Object obj, final String message) {
         if (obj == null) {
             throw new IllegalArgumentException(message);
         }

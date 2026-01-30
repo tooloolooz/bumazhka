@@ -32,9 +32,9 @@ public class VehicleRegionCodeBenchmark {
             "68", "69", "70", "71", "72", "73", "74", "76", "52", "53", "54", "55", "56", "77", "97", "99", "78", "98",
             "92", "79", "83", "86", "87", "89", "94"
     );
-    private List<String> validCodes;
-    private List<String> invalidCodes;
-    private List<String> mixedCodes;
+    private List<String> validCodes = new ArrayList<>();
+    private List<String> invalidCodes = new ArrayList<>();
+    private List<String> mixedCodes = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         org.openjdk.jmh.Main.main(args);

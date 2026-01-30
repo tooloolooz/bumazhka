@@ -120,6 +120,7 @@ class VehicleRegionCodeValidatorTest {
     }
 
     @Test
+    @SuppressWarnings("NullAway")
     void isValidWithoutLengthTestWithNullCode() {
         assertThatThrownBy(() -> VehicleRegionCodeValidator.isValid(null))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -127,6 +128,7 @@ class VehicleRegionCodeValidatorTest {
     }
 
     @Test
+    @SuppressWarnings("NullAway")
     void isValidWithLengthTestWithNullCode() {
         assertThatThrownBy(() -> VehicleRegionCodeValidator.isValid(null, VehicleRegionCodeValidator.RegionCodeLength.TWO_DIGIT))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -134,6 +136,7 @@ class VehicleRegionCodeValidatorTest {
     }
 
     @Test
+    @SuppressWarnings("NullAway")
     void isValidWithLengthTestWithNullLength() {
         assertThatThrownBy(() -> VehicleRegionCodeValidator.isValid("01", null))
                 .isInstanceOf(IllegalArgumentException.class)

@@ -183,15 +183,10 @@
                         <configuration>
                             <failOnError>true</failOnError>
                             <failOnWarning>true</failOnWarning>
-                            <testIncludes>false</testIncludes>
                             <compilerArgs>
                                 <arg>-XDcompilePolicy=simple</arg>
                                 <arg>--should-stop=ifError=FLOW</arg>
-                                <arg>
-                                    -Xplugin:ErrorProne \
-                                    -XepOpt:NullAway:AnnotatedPackages=ru.tooloolooz.bumazhka \
-                                    -XepOpt:NullAway:JSpecifyMode=true
-                                </arg>
+                                <arg>-Xplugin:ErrorProne -XepOpt:NullAway:AnnotatedPackages=ru.tooloolooz.bumazhka -XepOpt:NullAway:JspecifyMode=true</arg>
                                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
                                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
                                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
@@ -230,6 +225,56 @@
                                 <id>check</id>
                                 <goals>
                                     <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <configuration>
+                            <effort>Max</effort>
+                            <threshold>Low</threshold>
+                            <xmlOutput>true</xmlOutput>
+                            <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                            <plugins>
+                                <plugin>
+                                    <groupId>com.mebigfatguy.sb-contrib</groupId>
+                                    <artifactId>sb-contrib</artifactId>
+                                    <version>${sb.contrib.version}</version>
+                                </plugin>
+                                <dependency>
+                                    <groupId>com.h3xstream.findsecbugs</groupId>
+                                    <artifactId>findsecbugs-plugin</artifactId>
+                                    <version>${findsecbugs.plugin.version}</version>
+                                </dependency>
+                            </plugins>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <failurePriority>5</failurePriority>
+                            <linkXRef>false</linkXRef>
+                            <targetJdk>${java.version}</targetJdk>
+                            <rulesets>
+                                <ruleset>pmd-rules.xml</ruleset>
+                            </rulesets>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                    <goal>cpd-check</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -289,56 +334,6 @@
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs-maven-plugin</artifactId>
-                        <configuration>
-                            <effort>Max</effort>
-                            <threshold>Low</threshold>
-                            <xmlOutput>true</xmlOutput>
-                            <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
-                            <plugins>
-                                <plugin>
-                                    <groupId>com.mebigfatguy.sb-contrib</groupId>
-                                    <artifactId>sb-contrib</artifactId>
-                                    <version>${sb.contrib.version}</version>
-                                </plugin>
-                                <dependency>
-                                    <groupId>com.h3xstream.findsecbugs</groupId>
-                                    <artifactId>findsecbugs-plugin</artifactId>
-                                    <version>${findsecbugs.plugin.version}</version>
-                                </dependency>
-                            </plugins>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-pmd-plugin</artifactId>
-                        <configuration>
-                            <failOnViolation>true</failOnViolation>
-                            <failurePriority>5</failurePriority>
-                            <linkXRef>false</linkXRef>
-                            <targetJdk>${java.version}</targetJdk>
-                            <rulesets>
-                                <ruleset>pmd-rules.xml</ruleset>
-                            </rulesets>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>check</goal>
-                                    <goal>cpd-check</goal>
                                 </goals>
                             </execution>
                         </executions>

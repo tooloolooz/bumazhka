@@ -169,7 +169,8 @@
                         <artifactId>maven-checkstyle-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>check</id>
+                                <id>checkstyle-main</id>
+                                <phase>validate</phase>
                                 <goals>
                                     <goal>check</goal>
                                 </goals>
@@ -199,6 +200,8 @@
                         </configuration>
                         <executions>
                             <execution>
+                                <id>spotbugs-main</id>
+                                <phase>process-classes</phase>
                                 <goals>
                                     <goal>check</goal>
                                 </goals>
@@ -219,8 +222,16 @@
                         </configuration>
                         <executions>
                             <execution>
+                                <id>pmd-main</id>
+                                <phase>process-classes</phase>
                                 <goals>
                                     <goal>check</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>pmd-cpd-main</id>
+                                <phase>process-classes</phase>
+                                <goals>
                                     <goal>cpd-check</goal>
                                 </goals>
                             </execution>
@@ -232,12 +243,14 @@
                         <executions>
                             <execution>
                                 <id>prepare-agent</id>
+                                <phase>process-test-classes</phase>
                                 <goals>
                                     <goal>prepare-agent</goal>
                                 </goals>
                             </execution>
                             <execution>
                                 <id>check</id>
+                                <phase>test</phase>
                                 <goals>
                                     <goal>check</goal>
                                 </goals>

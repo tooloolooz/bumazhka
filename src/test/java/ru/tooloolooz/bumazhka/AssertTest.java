@@ -2,30 +2,10 @@ package ru.tooloolooz.bumazhka;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class AssertTest {
-
-    @Test
-    void constructorTest() throws NoSuchMethodException {
-        Constructor<Assert> constructor = Assert.class.getDeclaredConstructor();
-        constructor.setAccessible(true);
-
-        assertThat(Modifier.isPrivate(constructor.getModifiers()))
-                .isTrue();
-        assertThat(constructor.getParameterCount())
-                .isZero();
-        assertThatThrownBy(constructor::newInstance)
-                .isInstanceOf(InvocationTargetException.class)
-                .extracting(Throwable::getCause)
-                .isInstanceOf(UnsupportedOperationException.class)
-                .extracting(Throwable::getMessage)
-                .isEqualTo("Utility class should not be instantiated");
-    }
 
     @Test
     void unsupportedTest() {

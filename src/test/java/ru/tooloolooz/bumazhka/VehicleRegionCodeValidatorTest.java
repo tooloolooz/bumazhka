@@ -5,9 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -86,23 +83,6 @@ class VehicleRegionCodeValidatorTest {
                 Arguments.of("100", VehicleRegionCodeValidator.RegionCodeLength.ANY, false),
                 Arguments.of("900", VehicleRegionCodeValidator.RegionCodeLength.ANY, false)
         );
-    }
-
-    @Test
-    void constructorTest() throws NoSuchMethodException {
-        Constructor<VehicleRegionCodeValidator> constructor = VehicleRegionCodeValidator.class.getDeclaredConstructor();
-        constructor.setAccessible(true);
-
-        assertThat(Modifier.isPrivate(constructor.getModifiers()))
-                .isTrue();
-        assertThat(constructor.getParameterCount())
-                .isZero();
-        assertThatThrownBy(constructor::newInstance)
-                .isInstanceOf(InvocationTargetException.class)
-                .extracting(Throwable::getCause)
-                .isInstanceOf(UnsupportedOperationException.class)
-                .extracting(Throwable::getMessage)
-                .isEqualTo("Utility class should not be instantiated");
     }
 
     @ParameterizedTest

@@ -302,6 +302,22 @@
                     <plugin>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-maven</artifactId>
+                        <configuration>
+                            <mutators>
+                                <mutator>ALL</mutator>
+                            </mutators>
+                            <coverageThreshold>80</coverageThreshold>
+                            <mutationThreshold>80</mutationThreshold>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>pitest-main</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>

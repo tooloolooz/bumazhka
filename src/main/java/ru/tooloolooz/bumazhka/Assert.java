@@ -37,7 +37,6 @@ final class Assert {
      * @param message the message to be used in the exception.
      * @throws UnsupportedOperationException always.
      */
-    @SuppressWarnings("DoNotCallSuggester")
     public static void unsupported(final String message) {
         throw new UnsupportedOperationException(message);
     }

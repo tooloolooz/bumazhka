@@ -16,7 +16,6 @@
         <jspecify.version>1.0.0</jspecify.version>
         <juint.version>6.0.2</juint.version>
         <assertj.version>3.27.7</assertj.version>
-        <jmh.version>1.37</jmh.version>
         <!--        plugins-->
         <checkstyle.maven.plugin.version>3.6.0</checkstyle.maven.plugin.version>
         <checkstyle.version>13.1.0</checkstyle.version>
@@ -55,8 +54,6 @@
             <groupId>org.jspecify</groupId>
             <artifactId>jspecify</artifactId>
             <version>${jspecify.version}</version>
-            <scope>provided</scope>
-            <optional>true</optional>
         </dependency>
         <!--        test-->
         <dependency>
@@ -67,12 +64,6 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -318,26 +309,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>jmh</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <annotationProcessorPaths>
-                                <path>
-                                    <groupId>org.openjdk.jmh</groupId>
-                                    <artifactId>jmh-generator-annprocess</artifactId>
-                                    <version>${jmh.version}</version>
-                                </path>
-                            </annotationProcessorPaths>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>

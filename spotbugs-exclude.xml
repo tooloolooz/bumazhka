@@ -6,4 +6,16 @@
         <Method name="isValid" parameters="java.lang.String" return="boolean"/>
         <Bug pattern="OPM_OVERLY_PERMISSIVE_METHOD"/>
     </Match>
+    <Match>
+        <!-- This is API method, expected to be used by unknown client code -->
+        <Class name="ru.tooloolooz.bumazhka.VehiclePlateValidator" />
+        <Method name="isValid" parameters="java.lang.String" return="boolean"/>
+        <Bug pattern="OPM_OVERLY_PERMISSIVE_METHOD" />
+    </Match>
+    <Match>
+        <!-- This is API method, expected to be used by unknown client code -->
+        <Class name="ru.tooloolooz.bumazhka.VehiclePlateValidator" />
+        <Method name="isValid" parameters="java.lang.String, ru.tooloolooz.bumazhka.VehiclePlateValidator.VehiclePlateType" return="boolean"/>
+        <Bug pattern="OPM_OVERLY_PERMISSIVE_METHOD" />
+    </Match>
 </FindBugsFilter>

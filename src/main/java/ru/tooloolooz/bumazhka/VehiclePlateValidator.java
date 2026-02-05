@@ -132,7 +132,7 @@ public final class VehiclePlateValidator {
     private static PlateValidator getValidator(final PlateType type) {
         return switch (type) {
             case TYPE_1, TYPE_1A -> TYPE_1_PLATE_VALIDATOR;
-            default -> TYPE_ANY_PLATE_VALIDATOR;
+            case ANY -> TYPE_ANY_PLATE_VALIDATOR;
         };
     }
 

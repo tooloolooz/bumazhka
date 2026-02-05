@@ -74,7 +74,6 @@ class VehiclePlateValidatorTest {
     }
 
     @Test
-    @SuppressWarnings("NullAway")
     void validateTestForNullCode() {
         assertThatThrownBy(() -> VehiclePlateValidator.validate(null))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -82,7 +81,6 @@ class VehiclePlateValidatorTest {
     }
 
     @Test
-    @SuppressWarnings("NullAway")
     void validateTestForNullCodeType1() {
         assertThatThrownBy(() -> VehiclePlateValidator.validate(null, VehiclePlateValidator.PlateType.TYPE_1))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -90,7 +88,6 @@ class VehiclePlateValidatorTest {
     }
 
     @Test
-    @SuppressWarnings("NullAway")
     void validateTestForNullType() {
         assertThatThrownBy(() -> VehiclePlateValidator.validate("", null))
                 .isInstanceOf(IllegalArgumentException.class)

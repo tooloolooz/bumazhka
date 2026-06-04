@@ -88,32 +88,6 @@ public final class Type1PlateValidator implements PlateValidator {
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean isValid(final String plate) {
-        final int plateLength = plate.length();
-        if (plateLength < MIN_PLATE_SIZE || MAX_PLATE_SIZE < plateLength) {
-            return false;
-        }
-        return isAllowedLetter(plate.charAt(POSITION_1))
-               && isDigit(plate.charAt(POSITION_2))
-               && isDigit(plate.charAt(POSITION_3))
-               && isDigit(plate.charAt(POSITION_4))
-               && isAllowedLetter(plate.charAt(POSITION_5))
-               && isAllowedLetter(plate.charAt(POSITION_6))
-               && VehicleRegionCodeValidator.isValid(plate.substring(POSITION_7, plateLength));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public VehiclePlateValidator.PlateType getType() {
-        return VehiclePlateValidator.PlateType.TYPE_1;
-    }
-
-    /**
      * Checks if a character is an allowed Cyrillic letter for vehicle plate series.
      * <p>
      * Russian vehicle registration plates permit only 12 specific Cyrillic letters in the series positions.
@@ -124,7 +98,6 @@ public final class Type1PlateValidator implements PlateValidator {
      * {@code false} otherwise (including Latin letters, other Cyrillic letters,
      * digits, symbols, etc.)
      */
-    @SuppressWarnings("PMD.CyclomaticComplexity")
     private static boolean isAllowedLetter(final char character) {
         return switch (character) {
             case 'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х' -> true;
@@ -140,5 +113,31 @@ public final class Type1PlateValidator implements PlateValidator {
      */
     private static boolean isDigit(final char character) {
         return '0' <= character && character <= '9';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isValid(final String plate) {
+        final int plateLength = plate.length();
+        if (plateLength < MIN_PLATE_SIZE || MAX_PLATE_SIZE < plateLength) {
+            return false;
+        }
+        return isAllowedLetter(plate.charAt(POSITION_1))
+                && isDigit(plate.charAt(POSITION_2))
+                && isDigit(plate.charAt(POSITION_3))
+                && isDigit(plate.charAt(POSITION_4))
+                && isAllowedLetter(plate.charAt(POSITION_5))
+                && isAllowedLetter(plate.charAt(POSITION_6))
+                && VehicleRegionCodeValidator.isValid(plate.substring(POSITION_7, plateLength));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public VehiclePlateValidator.PlateType getType() {
+        return VehiclePlateValidator.PlateType.TYPE_1;
     }
 }

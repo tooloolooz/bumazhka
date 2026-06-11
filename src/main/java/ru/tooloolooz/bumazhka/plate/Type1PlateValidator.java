@@ -3,10 +3,14 @@ package ru.tooloolooz.bumazhka.plate;
 import ru.tooloolooz.bumazhka.VehiclePlateValidator;
 import ru.tooloolooz.bumazhka.VehicleRegionCodeValidator;
 
+import java.util.Set;
+
 /**
  * Implementation of a validator for Type 1 vehicle registration plates.
+ *
  * <p>
  * This utility class provides validation for Russian Federation vehicle state registration plates.
+ *
  * <p>
  * This validator checks:
  * <ul>
@@ -23,6 +27,7 @@ import ru.tooloolooz.bumazhka.VehicleRegionCodeValidator;
 public final class Type1PlateValidator implements PlateValidator {
     /**
      * Singleton instance of the Type 1 vehicle plate validator.
+     *
      * <p>
      * Use this instance for all Type 1 plate validations to ensure consistency
      * and avoid unnecessary object instantiation.
@@ -31,6 +36,7 @@ public final class Type1PlateValidator implements PlateValidator {
 
     /**
      * Maximum allowed plate length (9 characters).
+     *
      * <p>
      * This includes plates with 3-digit region codes.
      */
@@ -38,6 +44,7 @@ public final class Type1PlateValidator implements PlateValidator {
 
     /**
      * Minimum allowed plate length (8 characters).
+     *
      * <p>
      * This includes plates with 2-digit region codes.
      */
@@ -79,7 +86,19 @@ public final class Type1PlateValidator implements PlateValidator {
     private static final int POSITION_7 = 6;
 
     /**
+     * Set of allowed characters to use in series of vehicle plates.
+     *
+     * <p>
+     * Russian vehicle registration plates permit only 12 specific Cyrillic letters in the series positions.
+     * <b>Allowed Letters (12 total):</b> 'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х'
+     */
+    private static final Set<Character> ALLOWED_CHARACTERS = Set.of(
+            'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х'
+    );
+
+    /**
      * Private constructor to enforce non-instantiability.
+     *
      * <p>
      * All functionality is provided through static methods and the singleton instance {@link #INSTANCE}.
      */
@@ -89,20 +108,14 @@ public final class Type1PlateValidator implements PlateValidator {
 
     /**
      * Checks if a character is an allowed Cyrillic letter for vehicle plate series.
-     * <p>
-     * Russian vehicle registration plates permit only 12 specific Cyrillic letters in the series positions.
-     * <b>Allowed Letters (12 total):</b> 'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х'
      *
      * @param character the character to check for allowance in plate series
      * @return {@code true} if the character is one of the 12 allowed Cyrillic letters,
-     * {@code false} otherwise (including Latin letters, other Cyrillic letters,
-     * digits, symbols, etc.)
+     *     {@code false} otherwise (including Latin letters, other Cyrillic letters,
+     *     digits, symbols, etc.)
      */
     private static boolean isAllowedLetter(final char character) {
-        return switch (character) {
-            case 'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х' -> true;
-            default -> false;
-        };
+        return ALLOWED_CHARACTERS.contains(character);
     }
 
     /**
@@ -119,6 +132,7 @@ public final class Type1PlateValidator implements PlateValidator {
      * {@inheritDoc}
      */
     @Override
+    @SuppressWarnings("PMD.OnlyOneReturn")
     public boolean isValid(final String plate) {
         final int plateLength = plate.length();
         if (plateLength < MIN_PLATE_SIZE || MAX_PLATE_SIZE < plateLength) {
@@ -131,13 +145,5 @@ public final class Type1PlateValidator implements PlateValidator {
                 && isAllowedLetter(plate.charAt(POSITION_5))
                 && isAllowedLetter(plate.charAt(POSITION_6))
                 && VehicleRegionCodeValidator.isValid(plate.substring(POSITION_7, plateLength));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public VehiclePlateValidator.PlateType getType() {
-        return VehiclePlateValidator.PlateType.TYPE_1;
     }
 }

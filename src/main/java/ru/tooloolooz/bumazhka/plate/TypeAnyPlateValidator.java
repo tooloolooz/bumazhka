@@ -4,10 +4,12 @@ import ru.tooloolooz.bumazhka.VehiclePlateValidator;
 
 /**
  * Composite validator that delegates validation to all available plate type validators.
+ *
  * <p>
  * This validator implements the {@link VehiclePlateValidator.PlateType#ANY} type validation
  * strategy, where a plate is considered valid if it passes validation by <b>any</b> of
  * the registered plate type validators.
+ *
  * <p>
  * <b>Validation Strategy:</b>
  * The validator uses logical OR semantics - a plate is valid if it matches
@@ -19,6 +21,7 @@ import ru.tooloolooz.bumazhka.VehiclePlateValidator;
 public final class TypeAnyPlateValidator implements PlateValidator {
     /**
      * Singleton instance of the Type Any vehicle plate validator.
+     *
      * <p>
      * Use this instance for all implemented validations to ensure consistency
      * and avoid unnecessary object instantiation.
@@ -27,6 +30,7 @@ public final class TypeAnyPlateValidator implements PlateValidator {
 
     /**
      * Private constructor to enforce non-instantiability.
+     *
      * <p>
      * All functionality is provided through static methods and the singleton instance {@link #INSTANCE}.
      */
@@ -40,13 +44,5 @@ public final class TypeAnyPlateValidator implements PlateValidator {
     @Override
     public boolean isValid(final String plate) {
         return Type1PlateValidator.INSTANCE.isValid(plate);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public VehiclePlateValidator.PlateType getType() {
-        return VehiclePlateValidator.PlateType.ANY;
     }
 }

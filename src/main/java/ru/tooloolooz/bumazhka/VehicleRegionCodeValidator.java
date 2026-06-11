@@ -25,11 +25,6 @@ public final class VehicleRegionCodeValidator {
     );
 
     /**
-     * Length of 2-digit vehicle codes.
-     */
-    private static final int TWO_DIGIT_CODE_LENGTH = 2;
-
-    /**
      * Length of 3-digit vehicle codes.
      */
     private static final int THREE_DIGIT_CODE_LENGTH = 3;
@@ -52,14 +47,7 @@ public final class VehicleRegionCodeValidator {
      * @throws IllegalArgumentException if {@code code} is {@code null}.
      */
     public static boolean isValid(final String code) {
-        Assert.notNull(code, "Code must be not null");
-
-        final int length = code.length();
-        return switch (length) {
-            case TWO_DIGIT_CODE_LENGTH -> isValidTwoDigit(code);
-            case THREE_DIGIT_CODE_LENGTH -> isValidThreeDigit(code);
-            default -> false;
-        };
+        return isValid(code, RegionCodeLength.ANY);
     }
 
     /**
@@ -78,7 +66,7 @@ public final class VehicleRegionCodeValidator {
         return switch (length) {
             case TWO_DIGIT -> isValidTwoDigit(code);
             case THREE_DIGIT -> isValidThreeDigit(code);
-            case ANY -> isValid(code);
+            case ANY -> isValidTwoDigit(code) || isValidThreeDigit(code);
         };
     }
 
@@ -91,7 +79,7 @@ public final class VehicleRegionCodeValidator {
      * @throws IllegalArgumentException if {@code code} is {@code null}.
      */
     private static boolean isValidTwoDigit(final String code) {
-        return code.length() == TWO_DIGIT_CODE_LENGTH && REGION_CODES.contains(code);
+        return REGION_CODES.contains(code);
     }
 
     /**

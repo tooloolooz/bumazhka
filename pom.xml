@@ -98,6 +98,36 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <version>3.28.0</version>
+                        <configuration>
+                            <rulesets>
+                                <ruleset>${project.basedir}/pmd-ruleset.xml</ruleset>
+                            </rulesets>
+                            <linkXRef>false</linkXRef>
+                            <failOnViolation>true</failOnViolation>
+                            <minimumPriority>5</minimumPriority>
+                            <targetJdk>${java.version}</targetJdk>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>pmd-main</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>cpd-main</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>cpd-check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <groupId>com.github.spotbugs</groupId>
                         <artifactId>spotbugs-maven-plugin</artifactId>
                         <version>4.10.3.0</version>

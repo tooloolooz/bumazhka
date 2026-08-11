@@ -123,7 +123,6 @@
         <module name="RequireEmptyLineBeforeBlockTagGroup"/>
         <module name="ClassDataAbstractionCoupling"/>
         <module name="ClassFanOutComplexity"/>
-        <module name="CyclomaticComplexity"/>
         <module name="JavaNCSS"/>
         <module name="NPathComplexity"/>
         <module name="ArrayTypeStyle"/>

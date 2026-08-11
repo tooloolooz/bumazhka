@@ -97,7 +97,7 @@ public final class VehicleRegionCodeValidator {
         }
         final char firstChar = code.charAt(0);
         final String regionCode = code.substring(1, length);
-        return '1' <= firstChar && firstChar <= '9' && REGION_CODES.contains(regionCode);
+        return CharacterUtils.isNonZeroDigit(firstChar) && REGION_CODES.contains(regionCode);
     }
 
     /**

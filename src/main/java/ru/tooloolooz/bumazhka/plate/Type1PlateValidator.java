@@ -1,5 +1,6 @@
 package ru.tooloolooz.bumazhka.plate;
 
+import ru.tooloolooz.bumazhka.CharacterUtils;
 import ru.tooloolooz.bumazhka.VehiclePlateValidator;
 import ru.tooloolooz.bumazhka.VehicleRegionCodeValidator;
 
@@ -113,16 +114,6 @@ public final class Type1PlateValidator implements PlateValidator {
     }
 
     /**
-     * Checks if a character is a decimal digit (0-9).
-     *
-     * @param character the character to check for digit status
-     * @return {@code true} if the character is a basic digit (0-9), {@code false} otherwise
-     */
-    private static boolean isDigit(final char character) {
-        return '0' <= character && character <= '9';
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -132,9 +123,9 @@ public final class Type1PlateValidator implements PlateValidator {
             return false;
         }
         return isAllowedLetter(plate.charAt(POSITION_1))
-                && isDigit(plate.charAt(POSITION_2))
-                && isDigit(plate.charAt(POSITION_3))
-                && isDigit(plate.charAt(POSITION_4))
+                && CharacterUtils.isDigit(plate.charAt(POSITION_2))
+                && CharacterUtils.isDigit(plate.charAt(POSITION_3))
+                && CharacterUtils.isDigit(plate.charAt(POSITION_4))
                 && isAllowedLetter(plate.charAt(POSITION_5))
                 && isAllowedLetter(plate.charAt(POSITION_6))
                 && VehicleRegionCodeValidator.isValid(plate.substring(POSITION_7, plateLength));

@@ -1,7 +1,5 @@
 package ru.tooloolooz.bumazhka.plate;
 
-import ru.tooloolooz.bumazhka.VehiclePlateValidator;
-
 /**
  * Composite validator that delegates validation to all available plate type validators.
  *
@@ -15,10 +13,10 @@ import ru.tooloolooz.bumazhka.VehiclePlateValidator;
  * The validator uses logical OR semantics - a plate is valid if it matches
  * <b>ANY</b> of the supported formats.
  *
- * @see PlateValidator
+ * @see TypePlateValidator
  * @see VehiclePlateValidator.PlateType#ANY
  */
-public final class TypeAnyPlateValidator implements PlateValidator {
+final class TypeAnyPlateValidator implements TypePlateValidator {
     /**
      * Singleton instance of the Type Any vehicle plate validator.
      *

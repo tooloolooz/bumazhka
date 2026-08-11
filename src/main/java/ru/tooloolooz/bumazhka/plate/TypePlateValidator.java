@@ -1,7 +1,5 @@
 package ru.tooloolooz.bumazhka.plate;
 
-import ru.tooloolooz.bumazhka.VehiclePlateValidator;
-
 /**
  * Base interface for all vehicle registration plate validators.
  *
@@ -12,7 +10,7 @@ import ru.tooloolooz.bumazhka.VehiclePlateValidator;
  *
  * @see VehiclePlateValidator.PlateType
  */
-public sealed interface PlateValidator permits TypeAnyPlateValidator, Type1PlateValidator {
+sealed interface TypePlateValidator permits TypeAnyPlateValidator, Type1PlateValidator {
     /**
      * Validates a vehicle registration plate according to the specific format rules.
      *

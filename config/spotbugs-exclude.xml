@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FindBugsFilter>
     <Match>
-        <Class name="ru.tooloolooz.bumazhka.VehiclePlateValidator"/>
+        <Class name="ru.tooloolooz.bumazhka.plate.VehiclePlateValidator"/>
         <Method name="isValid"/>
         <Bug pattern="OPM_OVERLY_PERMISSIVE_METHOD"/>
     </Match>
     <Match>
-        <Class name="ru.tooloolooz.bumazhka.VehiclePlateValidator"/>
+        <Class name="ru.tooloolooz.bumazhka.plate.VehiclePlateValidator"/>
         <Method name="validate"/>
         <Bug pattern="OPM_OVERLY_PERMISSIVE_METHOD"/>
     </Match>

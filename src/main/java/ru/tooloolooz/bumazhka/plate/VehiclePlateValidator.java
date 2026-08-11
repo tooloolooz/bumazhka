@@ -1,8 +1,7 @@
-package ru.tooloolooz.bumazhka;
+package ru.tooloolooz.bumazhka.plate;
 
-import ru.tooloolooz.bumazhka.plate.PlateValidator;
-import ru.tooloolooz.bumazhka.plate.Type1PlateValidator;
-import ru.tooloolooz.bumazhka.plate.TypeAnyPlateValidator;
+import ru.tooloolooz.bumazhka.Assert;
+import ru.tooloolooz.bumazhka.NotValidException;
 
 /**
  * Utility class for validating Russian Federation vehicle registration plates (license plates).
@@ -33,7 +32,7 @@ import ru.tooloolooz.bumazhka.plate.TypeAnyPlateValidator;
  *
  * @see PlateType
  * @see NotValidException
- * @see PlateValidator
+ * @see TypePlateValidator
  * @see <a href="https://docs.cntd.ru/document/1200160380">GOST R 50577-2018 State Registration Plates for Vehicles</a>
  */
 public final class VehiclePlateValidator {
@@ -128,7 +127,7 @@ public final class VehiclePlateValidator {
      * @param type the vehicle plate type
      * @return the validator instance for the specified type
      */
-    private static PlateValidator getValidator(final PlateType type) {
+    private static TypePlateValidator getValidator(final PlateType type) {
         return switch (type) {
             case TYPE_1, TYPE_1A -> Type1PlateValidator.INSTANCE;
             case ANY -> TypeAnyPlateValidator.INSTANCE;

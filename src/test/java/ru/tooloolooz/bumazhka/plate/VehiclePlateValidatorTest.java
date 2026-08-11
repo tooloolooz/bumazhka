@@ -1,9 +1,10 @@
-package ru.tooloolooz.bumazhka;
+package ru.tooloolooz.bumazhka.plate;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import ru.tooloolooz.bumazhka.NotValidException;
 
 import java.util.stream.Stream;
 

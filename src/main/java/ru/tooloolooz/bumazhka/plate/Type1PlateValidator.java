@@ -1,7 +1,6 @@
 package ru.tooloolooz.bumazhka.plate;
 
 import ru.tooloolooz.bumazhka.CharacterUtils;
-import ru.tooloolooz.bumazhka.VehiclePlateValidator;
 import ru.tooloolooz.bumazhka.VehicleRegionCodeValidator;
 
 /**
@@ -19,11 +18,11 @@ import ru.tooloolooz.bumazhka.VehicleRegionCodeValidator;
  *   <li>Region code validity using {@link VehicleRegionCodeValidator}</li>
  * </ul>
  *
- * @see PlateValidator
+ * @see TypePlateValidator
  * @see VehiclePlateValidator.PlateType#TYPE_1
  * @see <a href="https://docs.cntd.ru/document/1200160380">GOST R 50577-2018 State Registration Plates for Vehicles</a>
  */
-public final class Type1PlateValidator implements PlateValidator {
+final class Type1PlateValidator implements TypePlateValidator {
     /**
      * Singleton instance of the Type 1 vehicle plate validator.
      *

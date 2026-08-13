@@ -1,5 +1,8 @@
 package ru.tooloolooz.bumazhka;
 
+import ru.tooloolooz.bumazhka.internal.Assert;
+import ru.tooloolooz.bumazhka.internal.CharacterUtils;
+
 import java.util.Set;
 
 /**

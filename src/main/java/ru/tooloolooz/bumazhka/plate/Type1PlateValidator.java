@@ -1,6 +1,6 @@
 package ru.tooloolooz.bumazhka.plate;
 
-import ru.tooloolooz.bumazhka.CharacterUtils;
+import ru.tooloolooz.bumazhka.internal.CharacterUtils;
 import ru.tooloolooz.bumazhka.VehicleRegionCodeValidator;
 
 /**

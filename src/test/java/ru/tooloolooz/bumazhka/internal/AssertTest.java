@@ -1,4 +1,4 @@
-package ru.tooloolooz.bumazhka;
+package ru.tooloolooz.bumazhka.internal;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package ru.tooloolooz.bumazhka;
+package ru.tooloolooz.bumazhka.internal;
 
 /**
  * A utility class providing convenient methods for working with characters.

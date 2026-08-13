@@ -1,4 +1,4 @@
-package ru.tooloolooz.bumazhka;
+package ru.tooloolooz.bumazhka.internal;
 
 /**
  * Utility class for condition checking and exception throwing.

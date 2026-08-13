@@ -1,6 +1,6 @@
 package ru.tooloolooz.bumazhka.plate;
 
-import ru.tooloolooz.bumazhka.Assert;
+import ru.tooloolooz.bumazhka.internal.Assert;
 import ru.tooloolooz.bumazhka.NotValidException;
 
 /**

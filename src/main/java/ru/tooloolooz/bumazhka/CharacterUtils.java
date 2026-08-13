@@ -36,4 +36,18 @@ public final class CharacterUtils {
     public static boolean isNonZeroDigit(final char character) {
         return '1' <= character && character <= '9';
     }
+
+    /**
+     * Converts a digit character ('0'–'9') to its integer value.
+     *
+     * @param digitCharacter a character representing a decimal digit
+     * @return the integer value of the digit (0–9)
+     */
+    public static int toInt(final char digitCharacter) {
+        if (digitCharacter < '0' || digitCharacter > '9') {
+            throw new IllegalArgumentException("Expected digit '0'-'9', but got: " + digitCharacter);
+        }
+
+        return digitCharacter - '0';
+    }
 }
